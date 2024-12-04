@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 
-
 const Header = () => {
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [dropdownToggler, setDropdownToggler] = useState(false);
@@ -33,10 +32,10 @@ const Header = () => {
       className={`fixed left-0 top-0 z-99999 w-full py-4 ${
         stickyMenu
           ? "bg-white !py-4 shadow transition duration-100 dark:bg-black"
-          : ""
+          : "bg-slate-700 bg-opacity-40"
       }`}
     >
-      <div className="relative mx-auto max-w-c-1390 items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0">
+      <div className="relative mx-auto max-w-c-1390 items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0 ">
         <div className="flex w-full items-center justify-between xl:w-1/4">
           <a href="/">
             <Image
@@ -140,8 +139,8 @@ const Header = () => {
                       href={`${menuItem.path}`}
                       className={`${
                         pathUrl === menuItem.path
-                          ? "text-white"
-                          : `${stickyMenu ? "text-black" : "text-white"}`
+                          ? "text-primary"
+                          : `${stickyMenu ? "text-black" : "text-white "}`
                       } hover:text-primary`}
                     >
                       {menuItem.title}
@@ -153,9 +152,9 @@ const Header = () => {
           </nav>
 
           <div className="mt-7 flex items-center gap-6 xl:mt-0">
-            <ThemeToggler />
+            {/* <ThemeToggler />
 
-<div>fdghfd</div>
+<div>fdghfd</div> */}
 
             <Link
               href="#"
