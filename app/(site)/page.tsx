@@ -12,6 +12,10 @@ import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
 import Blog from "@/components/Blog";
 import Testimonial from "@/components/Testimonial";
+import TravelCategories from "@/components/TravelCategories";
+import React from "react";
+import { NextUIProvider } from '@nextui-org/react';
+
 
 export const metadata: Metadata = {
   title: " CeylonBeauty | Explore the Best of Sri Lanka with Expert Tours",
@@ -20,21 +24,27 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  // @ts-ignore
   return (
+    <NextUIProvider>
     <main>
+
       <Hero />
-      {/* <Brands /> */}
+       <Brands />
+      <TravelCategories/>
       {/*<Feature />*/}
       <About />
-      <FeaturesTab />
-      <FunFact />
-      <Integration />
-      <CTA />
+      {/*<FeaturesTab />*/}
+      {/*<FunFact />*/}
+      {/*<Integration />*/}
+      {/*<CTA />*/}
       <FAQ />
       <Testimonial />
-      <Pricing />
+      {/*<Pricing />*/}
       <Contact />
-      <Blog />
+      {/*<Blog />*/}
+
     </main>
+    </NextUIProvider>
   );
 }
