@@ -7,11 +7,7 @@ import { heroSectionData } from "./heroSectionData";
 import Link from "next/link";
 
 const Hero = () => {
-  const [email, setEmail] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
 
   return (
     <>

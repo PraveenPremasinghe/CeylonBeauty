@@ -1,6 +1,4 @@
-import image1 from "@/public/images/hero/nine-arche.webp";
-import image2 from "@/public/images/user/user-02.png";
-import { Testimonial } from "@/types/testimonial";
+
 
 export const heroSectionData: any[] = [
   {

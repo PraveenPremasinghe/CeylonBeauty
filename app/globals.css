@@ -1,8 +1,8 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
 
 
 /* third-party libraries CSS */
@@ -142,4 +142,97 @@ pre {
   display: flex
 ;
   position: relative;
+}
+
+
+
+.sri-lanka-text {
+  background-image: url('../public/images/hero/sri-lanka-flag4.webp');
+  background-size: cover;
+  background-position: center;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  -webkit-background-clip: text; /* For Safari support */
+}
+
+.sri-lanka-gradient {
+  background-image: linear-gradient(45deg, #FFBE29, #EB7400, #00534E, #8D153A, #FFBE29);
+  background-size: 400%;
+  background-clip: text;
+  -webkit-background-clip: text; /* Safari support */
+  color: transparent;
+  animation: gradient-move 2s infinite linear;
+  display: inline-block;
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 100% center;
+  }
+}
+
+.varela-round-regular {
+  font-family: "Varela Round", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.introduction-bg {
+  /*background-image: url('https://images.pexels.com/photos/26620075/pexels-photo-26620075/free-photo-of-train-on-nine-arches-bridge-in-sri-lanka.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');*/
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(24deg, #000000, rgb(0 0 0 / 79%)), url('../public/images/hero/zn.jpg');
+}
+
+.gallery__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.gallery__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery__swiper {
+  width: 300px;
+  height: 280px;
+}
+
+.gallery__swiper-slide{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  overflow: hidden; /* Ensures the images are clipped to fit the border radius */
+}
+
+.gallery__swiper-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire slide without distortion */
+}
+
+.footer-bg{
+  background-image: url('https://www.lovesrilanka.org/wp-content/uploads/2019/09/Footer-Desktop-3.jpg');
+  background-size: cover;
+  background-position: center;
+  /*background-image: linear-gradient(3deg, #000000, rgb(255 255 255 / 40%)), url(https://www.lovesrilanka.org/wp-content/uploads/2019/09/Footer-Desktop-3.jpg);*/
+}
+
+.scan-me{
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+}
+.cta-bg{
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(3deg, #000000, rgb(255 255 255 / 40%)), url(https://images.pexels.com/photos/26847447/pexels-photo-26847447/free-photo-of-elephant-in-forest.jpeg?auto=compress&cs=tinysrgb&w=600);
 }

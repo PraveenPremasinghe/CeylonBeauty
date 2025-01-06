@@ -14,7 +14,9 @@ import Blog from "@/components/Blog";
 import Testimonial from "@/components/Testimonial";
 import TravelCategories from "@/components/TravelCategories";
 import React from "react";
-import { NextUIProvider } from '@nextui-org/react';
+
+import Introduction from "@/components/Introduction/introduction";
+import TravelStories from "@/components/TravelStories/travel-stories";
 
 
 export const metadata: Metadata = {
@@ -26,18 +28,16 @@ export const metadata: Metadata = {
 export default function Home() {
   // @ts-ignore
   return (
-    <NextUIProvider>
+
     <main>
 
       <Hero />
        <Brands />
       <TravelCategories/>
-      {/*<Feature />*/}
+      <Introduction/>
       <About />
-      {/*<FeaturesTab />*/}
-      {/*<FunFact />*/}
-      {/*<Integration />*/}
       {/*<CTA />*/}
+<TravelStories/>
       <FAQ />
       <Testimonial />
       {/*<Pricing />*/}
@@ -45,6 +45,6 @@ export default function Home() {
       {/*<Blog />*/}
 
     </main>
-    </NextUIProvider>
+
   );
 }
