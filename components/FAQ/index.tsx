@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import FAQItem from "./FAQItem";
 import faqData from "./faqData";
+import Link from "next/link";
 
 const FAQ = () => {
   const [activeFaq, setActiveFaq] = useState(1);
@@ -14,6 +15,14 @@ const FAQ = () => {
 
   return (
     <>
+
+
+      <Link href="/admin-login">
+        <button>Go to Admin Login</button>
+      </Link>
+
+
+
       {/* <!-- ===== FAQ Start ===== --> */}
       <section className="overflow-hidden pb-20 lg:pb-25 xl:pb-30">
         <div className="relative mx-auto max-w-c-1235 px-4 md:px-8 xl:px-0">

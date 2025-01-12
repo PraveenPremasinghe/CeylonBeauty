@@ -50,6 +50,8 @@ const About = () => {
                   alt={item.aboutTitle}
                   className="dark:hidden"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
                 />
               </motion.div>
               <motion.div

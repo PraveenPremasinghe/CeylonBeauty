@@ -16,7 +16,7 @@ import "../globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 import ToasterContext from "../context/ToastContext";
-import Introduction from "@/components/Introduction/introduction";
+import React from "react";
 
 export default function RootLayout({
   children,
@@ -38,6 +38,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <ScrollToTop />
+
 
         </ThemeProvider>
 

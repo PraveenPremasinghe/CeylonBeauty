@@ -1,3 +1,5 @@
+
+
 import { Metadata } from "next";
 import Hero from "@/components/Hero";
 import Brands from "@/components/Brands";
@@ -17,6 +19,8 @@ import React from "react";
 
 import Introduction from "@/components/Introduction/introduction";
 import TravelStories from "@/components/TravelStories/travel-stories";
+
+
 
 
 export const metadata: Metadata = {
@@ -43,6 +47,7 @@ export default function Home() {
       {/*<Pricing />*/}
       <Contact />
       {/*<Blog />*/}
+
 
     </main>
 
