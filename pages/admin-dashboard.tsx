@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {  CogIcon, UsersIcon, ShoppingCartIcon, HomeIcon } from "@heroicons/react/outline"; // Importing icons
+import {  CogIcon, UsersIcon, ShoppingCartIcon, HomeIcon } from "@heroicons/react/outline";
 import "app/globals.css";
+
 
 export default function Dashboard() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

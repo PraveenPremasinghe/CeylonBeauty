@@ -7,16 +7,10 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import "../globals.css";
-
-
-
-
-
-
 const inter = Inter({ subsets: ["latin"] });
-
 import ToasterContext from "../context/ToastContext";
 import React from "react";
+
 
 export default function RootLayout({
   children,
@@ -38,6 +32,8 @@ export default function RootLayout({
           {children}
           <Footer />
           <ScrollToTop />
+
+
 
 
         </ThemeProvider>
