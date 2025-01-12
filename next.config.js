@@ -2,7 +2,6 @@
 
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     domains: ["localhost", "plus.unsplash.com", "static01.nyt.com"],
     remotePatterns: [
