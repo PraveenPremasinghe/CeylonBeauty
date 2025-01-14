@@ -17,9 +17,9 @@ const FAQ = () => {
     <>
 
 
-      <Link href="/admin-login">
-        <button>Go to Admin Login</button>
-      </Link>
+
+      <Link href="/admin/admin-auth">Go to Login</Link>
+
 
 
 

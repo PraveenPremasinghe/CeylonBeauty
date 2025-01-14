@@ -1,7 +1,8 @@
 [
   {
-    "origin": ["https://ceylon-beauty-gizm1xa25-praveenpremasinghes-projects.vercel.app"],
-    "method": ["GET", "POST", "OPTIONS"],
+    "origin": ["http://localhost:3000"],
+    "responseHeader": ["Content-Type"],
+    "method": ["GET", "POST", "PUT"],
     "maxAgeSeconds": 3600
   }
 ]

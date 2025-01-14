@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { auth, signInWithEmailAndPassword } from "lib/firebase";
-import "app/globals.css";
+import { auth, signInWithEmailAndPassword } from "@/lib/firebase";
+import "@/app/globals.css";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push("/admin-dashboard"); // Redirect to upload page
+      router.push("/admin/upload-travel-stories");// Redirect to upload page
     } catch (err) {
       setError("Invalid email or password");
     }
