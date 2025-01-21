@@ -9,17 +9,17 @@ const Footer = () => {
         <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
           {/* <!-- Footer Top --> */}
           <div className="py-20 lg:py-25">
-            <div className="flex items-center justify-between gap-x-2">
+            <div className="flex items-center justify-between flex-col flex-wrap  gap-x-2 sm:gap-4">
               <div>
                 <div className="text-center">
-                  <p className="mb-1.5   uppercase tracking-[5px] text-white">
+                  <p className="mb-1.5   uppercase tracking-[5px] green-text">
                     Email
                   </p>
                   <a
-                    href="#"
-                    className="text-itemtitle font-medium text-white dark:text-white"
+                    href="mailto:ceylonbeautysrilanka@gmail.com"
+                    className="text-itemtitle font-medium green-text dark:text-white"
                   >
-                    hello@solid.com
+                    ceylonbeautysrilanka@gmail.com
                   </a>
                 </div>
               </div>
@@ -31,16 +31,16 @@ const Footer = () => {
                   alt="Logo"
                   className="dark:hidden scan-me"
                 />
-                <p className="text-white font-md text-center text-xl mt-2">Scan Me</p>
+                <p className="green-text font-md text-center text-xl mt-2">Scan Me</p>
               </div>
               <div>
                 <div className="text-center">
-                  <p className="mb-1.5   uppercase tracking-[5px] text-white">
+                  <p className="mb-1.5   uppercase tracking-[5px] green-text">
                     Phone
                   </p>
                   <a
-                    href="#"
-                    className="text-itemtitle font-medium text-white dark:text-white"
+                    href="tel:+94770882237"
+                    className="text-itemtitle font-medium green-text dark:text-white"
                   >
                    0770882237
                   </a>

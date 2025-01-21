@@ -6,7 +6,7 @@ export const heroSectionData: any[] = [
     subTitle: "Welcome to Sri Lanka",
     title: "We Take Care of your Trip",
     image:
-      "https://static01.nyt.com/images/2019/02/03/travel/03frugal-srilanka01/merlin_148552275_74c0d250-949c-46e0-b8a1-e6d499e992cf-superJumbo.jpg?quality=75&auto=webp",
+      "https://plus.unsplash.com/premium_photo-1730145749791-28fc538d7203?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content:
       "We believe in a travelling experience by providing our tour plan that suits your the best!",
     isButton: false,
@@ -17,7 +17,37 @@ export const heroSectionData: any[] = [
     subTitle: "Need assistance?",
     title: "Feel free to reach out",
     image:
-      "https://media.cntraveler.com/photos/64df56c0f3e99758036e9581/16:9/w_1920,c_limit/1288609237",
+      "https://images.pexels.com/photos/3250362/pexels-photo-3250362.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    isButton: true,
+    content: "",
+    btnContent: "Contact us",
+  },
+  {
+    id: 3,
+    subTitle: "Need assistance?",
+    title: "Feel free to reach out",
+    image:
+      "https://images.pexels.com/photos/2365974/pexels-photo-2365974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    isButton: true,
+    content: "",
+    btnContent: "Contact us",
+  },
+  {
+    id: 4,
+    subTitle: "Need assistance?",
+    title: "Feel free to reach out",
+    image:
+      "https://images.pexels.com/photos/2880718/pexels-photo-2880718.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    isButton: true,
+    content: "",
+    btnContent: "Contact us",
+  },
+  {
+    id: 5,
+    subTitle: "Need assistance?",
+    title: "Feel free to reach out",
+    image:
+      "https://images.pexels.com/photos/4553365/pexels-photo-4553365.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     isButton: true,
     content: "",
     btnContent: "Contact us",

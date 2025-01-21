@@ -1,9 +1,11 @@
-import { useRouter } from "next/router";
+"use client"; // Mark this file as a Client Component
+
+import { useRouter } from "next/navigation"; // Use next/navigation instead of next/router
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 
-const firebaseAuth = (WrappedComponent:React.FC) => {
+const firebaseAuth = (WrappedComponent: React.FC) => {
   const Wrapper: React.FC = (props) => {
     const [loading, setLoading] = useState(true);
     const [authenticated, setAuthenticated] = useState(false);

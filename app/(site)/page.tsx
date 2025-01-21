@@ -11,6 +11,9 @@ import TravelCategories from "@/components/TravelCategories";
 import React from "react";
 import Introduction from "@/components/Introduction/introduction";
 import TravelStories from "@/components/TravelStories/travel-stories";
+import Link from "next/link";
+
+
 
 
 
@@ -26,6 +29,8 @@ export default function Home() {
   return (
 
     <main>
+
+
 
       <Hero />
        <Brands />

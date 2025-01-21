@@ -16,13 +16,6 @@ const FAQ = () => {
   return (
     <>
 
-
-
-      <Link href="/admin/admin-auth">Go to Login</Link>
-
-
-
-
       {/* <!-- ===== FAQ Start ===== --> */}
       <section className="overflow-hidden pb-20 lg:pb-25 xl:pb-30">
         <div className="relative mx-auto max-w-c-1235 px-4 md:px-8 xl:px-0">

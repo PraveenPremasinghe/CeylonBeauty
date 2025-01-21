@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Autoplay, Pagination } from "swiper";
 import { heroSectionData } from "./heroSectionData";
 import Link from "next/link";
+import { WeatherCard } from "@/components/WeatherCard";
 
 const Hero = () => {
 
@@ -12,6 +13,9 @@ const Hero = () => {
   return (
     <>
       <section className="relative h-[100vh] overflow-hidden bg-cover bg-center ">
+        <div className="absolute top-4 right-4 z-999">
+          <WeatherCard />
+        </div>
         <motion.div
           variants={{
             hidden: {

@@ -1,44 +1,36 @@
-"use client";
-import React, { useEffect, useState } from "react";
+"use client"; // Add this line at the top of the file
+
+import { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { ceylonBeautyDatabase } from "@/lib/firebase";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SectionHeader from "@/components/Common/SectionHeader";
 import { EffectCards, Pagination } from "swiper";
-import { getDocs, collection } from "firebase/firestore"; // Firestore
-import { ceylonBeautyDatabase } from "lib/firebase.js"; // Firebase config
-import { Timestamp } from "firebase/firestore"; // For converting timestamp
+import "swiper/swiper-bundle.css";
+import SectionHeader from "@/components/Common/SectionHeader"; // Import Swiper styles
 
-interface TravelStory {
-  id: string;
-  travelStorieImages: string; // Single image as string
-  travelStorieName: string;
-  travelDate: Timestamp;
-}
+const Gallery = () => {
+  const [travelStories, setTravelStories] = useState<any[]>([]); // Store travel stories
+  const [loading, setLoading] = useState<boolean>(true); // Loading state
 
-const TravelStories: React.FC = () => {
-  const [travelStories, setTravelStories] = useState<TravelStory[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Fetch the travel stories from Firestore
+  const fetchTravelStories = async () => {
+    try {
+      setLoading(true);
+      const querySnapshot = await getDocs(collection(ceylonBeautyDatabase, "travelStories"));
+      const fetchedStories = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setTravelStories(fetchedStories);
+    } catch (error) {
+      console.error("Error fetching travel stories:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  // Fetch travel stories from Firestore
   useEffect(() => {
-    const fetchTravelStories = async () => {
-      try {
-        const travelStoriesCollection = collection(ceylonBeautyDatabase, "travelStories");
-        const snapshot = await getDocs(travelStoriesCollection);
-
-        const fetchedStories: TravelStory[] = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        })) as TravelStory[];
-
-        setTravelStories(fetchedStories);
-      } catch (error) {
-        console.error("Error fetching travel stories:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchTravelStories();
+    fetchTravelStories(); // Fetch data on component mount
   }, []);
 
   return (
@@ -67,22 +59,25 @@ const TravelStories: React.FC = () => {
                   pagination={{ clickable: true }}
                   className="gallery__swiper"
                 >
-                  <SwiperSlide className="gallery__swiper-slide">
-                    <img
-                      src={story.travelStorieImages}
-                      alt={story.travelStorieName}
-                      className="gallery__swiper-img"
-                    />
-                  </SwiperSlide>
+                  {/* Handle single or multiple images */}
+                  {story.imageUrls?.map((image, index) => (
+                    <SwiperSlide key={index} className="gallery__swiper-slide">
+                      <img
+                        src={image}
+                        alt={`${story.travelStoryName} - Slide ${index + 1}`}
+                        className="gallery__swiper-img object-cover w-full h-48 rounded-lg"
+                      />
+                    </SwiperSlide>
+                  ))}
                 </Swiper>
                 <div className="mt-2">
                   <p className="text-md font-semibold text-gray-800">
-                    {story.travelStorieName}
+                    {story.travelStoryName}
                   </p>
                   <p className="text-sm text-gray-500">
                     Date:{" "}
                     {story.travelDate
-                      ? new Date(story.travelDate.toDate()).toLocaleDateString()
+                      ? new Date(story.travelDate).toLocaleDateString()
                       : "Unknown Date"}
                   </p>
                 </div>
@@ -95,4 +90,4 @@ const TravelStories: React.FC = () => {
   );
 };
 
-export default TravelStories;
+export default Gallery;
