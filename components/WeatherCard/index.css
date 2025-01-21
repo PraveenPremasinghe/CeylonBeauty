@@ -2,7 +2,6 @@
     width: 270px;
     background: linear-gradient(to right, #3061EB 0.0%, #3594F7 0.5% , #36B7F2 100%);
     color: #ffffff;
-    /* From https://css.glass */
     background: rgba(255, 255, 255, 0.28);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -10,3 +9,9 @@
     -webkit-backdrop-filter: blur(17.4px);
     border: 1px solid rgba(255, 255, 255, 0.48);
 }
+.weather-card.scrolled {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+
+    border: 0px solid rgba(255, 255, 255, 0.48);
+}
+

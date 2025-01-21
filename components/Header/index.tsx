@@ -26,10 +26,16 @@ export default function Example() {
         <div className="mx-auto px-2 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-3">
             <div className="text-sm ">
-              <span>Whatsapp: +94 0770882237</span>
+              <a
+                href="tel:+94770882237"
+              >
+             Call Now    +94 077 714 7238
+              </a>
             </div>
             <div className="flex items-center space-x-4 text-sm  ">
-              <span>CeloaynBeautu@gmail.com</span>
+              <a href="mailto:ceylonbeautysrilanka@gmail.com" className="">
+                ceylonbeautysrilanka@gmail.com
+              </a>
             </div>
           </div>
         </div>

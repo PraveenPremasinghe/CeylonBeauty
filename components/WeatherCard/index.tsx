@@ -12,7 +12,12 @@ interface WeatherData {
   };
 }
 
-export const WeatherCard = () => {
+// Declare props for the WeatherCard component
+interface WeatherCardProps {
+  isScrolledPastHero: boolean;
+}
+
+export const WeatherCard: React.FC<WeatherCardProps> = ({ isScrolledPastHero }) => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const apiKey = process.env.NEXT_PUBLIC_WEATHERSTACK_API_KEY;
   const location = 'Colombo';
@@ -27,11 +32,18 @@ export const WeatherCard = () => {
         console.error("Error fetching weather data:", error);
       }
     };
+
     fetchWeather();
   }, []);
 
+
+
   return (
-    <div className="weather-card p-4 relative">
+    <div
+      className={`weather-card p-4 relative ${
+        isScrolledPastHero ? "scrolled" : ""
+      }`}
+    >
       <div className="text-MD">Sri Lanka</div>
 
       <div className="flex justify-between items-center pt-1 pb-1">

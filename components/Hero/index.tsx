@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion } from "framer-motion";
 import { Autoplay, Pagination } from "swiper";
@@ -8,13 +8,28 @@ import Link from "next/link";
 import { WeatherCard } from "@/components/WeatherCard";
 
 const Hero = () => {
+  const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      // Ensure that querySelector returns an HTMLElement and handle null values safely
+      const heroElement = document.querySelector(".hero-section") as HTMLElement | null;
+      const heroHeight = heroElement?.offsetHeight || 0; // If null, heroHeight defaults to 0
+      const scrollY = window.scrollY;
+
+      // Update the state based on whether the scroll position is greater than the hero height
+      setIsScrolledPastHero(scrollY > heroHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
-      <section className="relative h-[100vh] overflow-hidden bg-cover bg-center ">
-        <div className="absolute top-4 right-4 z-999">
-          <WeatherCard />
+      <section className="hero-section relative h-[100vh] overflow-hidden bg-cover bg-center ">
+        <div className="fixed top-15 right-4 z-999">
+          <WeatherCard isScrolledPastHero={isScrolledPastHero} />
         </div>
         <motion.div
           variants={{
