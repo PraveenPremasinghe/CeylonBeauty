@@ -1,7 +1,7 @@
 [
   {
     "origin": ["https://ceylon-beauty-7p4ja7jrg-praveenpremasinghes-projects.vercel.app"],
-    "method": ["GET", "POST", "PUT", "DELETE"],
+    "method": ["POST", "GET", "PUT", "DELETE"],
     "maxAgeSeconds": 3600,
     "responseHeader": ["Content-Type", "Authorization"]
   }
