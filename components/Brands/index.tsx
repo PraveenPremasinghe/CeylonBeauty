@@ -8,7 +8,7 @@ const Brands = () => {
     <>
       <section>
         <div className="relative  flex flex-wrap justify-center p-4">
-          <div className="relative z-99999 w-full max-w-7xl rounded-2xl green-gradient-bg p-15 sm:p-3 ">
+          <div className="relative z-99999 w-full max-w-7xl rounded-2xl green-gradient-bg md:p-15 sm:p-3 ">
             {/* Image positioned on top */}
             <div className="absolute -top-30 left-1/2 -translate-x-1/2 transform">
               <img
