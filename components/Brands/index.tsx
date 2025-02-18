@@ -13,14 +13,14 @@ const Brands = () => {
             <div className="absolute -top-30 left-1/2 -translate-x-1/2 transform">
               <img
                 className="h-60 w-60 rounded-full bg-white object-contain p-2  "
-                src="https://cdn.prod.website-files.com/66b5d6635ee4014275999ec3/66b9e945bbda84c8723fdcdc_tourist-white-background%201.avif"
+                src="/images/user/jaga2.png"
                 alt="Tourist"
               />
             </div>
 
             {/* Card Content */}
             <div className="grid items-center gap-4 md:grid-cols-3">
-              <div className="text-center text-5xl font-semibold text-white md:text-left leading-tight">
+              <div className="text-center text-5xl font-semibold text-secondary md:text-left leading-tight">
                 Embark On Your Next Chapter
               </div>
 
@@ -41,8 +41,8 @@ const Brands = () => {
 
                   </div>
                   <div>
-                    <p className="font-sm text-3xl text-white mb-2">For Any Call</p>
-                    <h1 className="text-4xl text-white font-semibold">+94 77 714 7238</h1>
+                    <p className="font-sm text-3xl text-secondary mb-2">For Any Call</p>
+                    <h1 className="text-4xl text-secondary font-semibold">+94 77 714 7238</h1>
                   </div>
                 </div>
               </div>

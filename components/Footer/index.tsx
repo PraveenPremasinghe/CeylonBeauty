@@ -5,19 +5,19 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <>
-      <footer className="footer-bg h-[80vh] border-t border-stroke bg-white dark:border-strokedark dark:bg-blacksection ">
+      <footer className="footer-bg h-[100vh] border-t border-stroke bg-white dark:border-strokedark dark:bg-blacksection ">
         <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
           {/* <!-- Footer Top --> */}
           <div className="py-20 lg:py-25">
-            <div className="flex items-center justify-between flex-col flex-wrap  gap-x-2 sm:gap-4">
+            <div className="flex items-center justify-between flex-col flex-wrap gap-13">
               <div>
                 <div className="text-center">
-                  <p className="mb-1.5   uppercase tracking-[5px] green-text">
+                  <p className="mb-1.5   uppercase tracking-[5px]    text-white ">
                     Email
                   </p>
                   <a
                     href="mailto:ceylonbeautysrilanka@gmail.com"
-                    className="text-itemtitle font-medium green-text dark:text-white"
+                    className="  font-medium md:text-5xl sm:text-2xl  text-white dark:text-white"
                   >
                     ceylonbeautysrilanka@gmail.com
                   </a>
@@ -27,20 +27,20 @@ const Footer = () => {
                 <Image
                   width={200}
                   height={80}
-                  src="/images/user/qr.png"
+                  src="/images/user/whtsappjaga.png"
                   alt="Logo"
                   className="dark:hidden scan-me"
                 />
-                <p className="green-text font-md text-center text-xl mt-2">Scan Me</p>
+                <p className="   text-white font-md text-center text-xl mt-2">Scan Me</p>
               </div>
               <div>
                 <div className="text-center">
-                  <p className="mb-1.5   uppercase tracking-[5px] green-text">
+                  <p className="mb-1.5   uppercase tracking-[5px]  text-2xl    text-white">
                     Phone
                   </p>
                   <a
                     href="tel:+94770882237"
-                    className="text-itemtitle font-medium green-text dark:text-white"
+                    className="text-4xl   font-medium    text-white dark:text-white"
                   >
                     077 714 7238
                   </a>
@@ -107,7 +107,7 @@ const Footer = () => {
               whileInView="visible"
               transition={{ duration: 1, delay: 0.1 }}
               viewport={{ once: true }}
-              className="animate_top"
+              className="animate_top text-black"
             >
               <p>
                 &copy; {new Date().getFullYear()} ZeroIndex. All rights reserved
@@ -136,7 +136,7 @@ const Footer = () => {
                 <li>
                   <a href="#" aria-label="social icon">
                     <svg
-                      className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
+                      className="fill-[#ffffff] transition-all duration-300 hover:fill-primary"
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"
@@ -160,7 +160,7 @@ const Footer = () => {
                 <li>
                   <a href="#" aria-label="social icon">
                     <svg
-                      className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
+                      className="fill-[#ffffff] transition-all duration-300 hover:fill-primary"
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"
@@ -184,7 +184,7 @@ const Footer = () => {
                 <li>
                   <a href="#" aria-label="social icon">
                     <svg
-                      className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
+                      className="fill-[#ffffff] transition-all duration-300 hover:fill-primary"
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"
@@ -208,7 +208,7 @@ const Footer = () => {
                 <li>
                   <a href="#" aria-label="social icon">
                     <svg
-                      className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
+                      className="fill-[#ffffff] transition-all duration-300 hover:fill-primary"
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"

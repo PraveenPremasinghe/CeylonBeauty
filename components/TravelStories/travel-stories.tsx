@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { ceylonBeautyDatabase } from "@/lib/firebase";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCards, Pagination } from "swiper";
+import { EffectCards, Navigation, Pagination } from "swiper";
 import "swiper/swiper-bundle.css";
-import SectionHeader from "@/components/Common/SectionHeader"; // Import Swiper styles
+import SectionHeader from "@/components/Common/SectionHeader";
 
 const Gallery = () => {
   const [travelStories, setTravelStories] = useState<any[]>([]); // Store travel stories
   const [loading, setLoading] = useState<boolean>(true); // Loading state
+  const [selectedStory, setSelectedStory] = useState<any | null>(null); // Store selected story
 
   // Fetch the travel stories from Firestore
   const fetchTravelStories = async () => {
@@ -33,6 +34,10 @@ const Gallery = () => {
     fetchTravelStories(); // Fetch data on component mount
   }, []);
 
+  const handleCardClick = (story: any) => {
+    setSelectedStory(story); // Set the selected story
+  };
+
   return (
     <section className="mt-20 overflow-hidden pb-20 lg:pb-25 xl:pb-30">
       <SectionHeader
@@ -51,21 +56,26 @@ const Gallery = () => {
         ) : (
           <div className="gallery grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {travelStories.map((story) => (
-              <figure key={story.id} className="gallery__item">
+              <figure
+                key={story.id}
+                className="gallery__item cursor-pointer"
+                onClick={() => handleCardClick(story)} // Click to select story
+              >
                 <Swiper
                   effect={"cards"}
                   grabCursor={true}
-                  modules={[EffectCards, Pagination]}
+                  modules={[EffectCards, Pagination, Navigation]}
                   pagination={{ clickable: true }}
+                  navigation={true}
                   className="gallery__swiper"
                 >
-                  {/* Handle single or multiple images */}
                   {story.imageUrls?.map((image, index) => (
                     <SwiperSlide key={index} className="gallery__swiper-slide">
                       <img
                         src={image}
                         alt={`${story.travelStoryName} - Slide ${index + 1}`}
                         className="gallery__swiper-img object-cover w-full h-48 rounded-lg"
+                        loading="lazy" // Lazy load images
                       />
                     </SwiperSlide>
                   ))}
@@ -83,6 +93,27 @@ const Gallery = () => {
                 </div>
               </figure>
             ))}
+          </div>
+        )}
+
+        {/* Display selected story images */}
+        {selectedStory && (
+          <div className="mt-20">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+              {selectedStory.travelStoryName}
+            </h2>
+            <div className="flex flex-row flex-wrap gap-2">
+              {selectedStory.imageUrls?.map((image, index) => (
+                <div key={index} className="w-48 h-48">
+                  <img
+                    src={image}
+                    alt={`${selectedStory.travelStoryName} - Image ${index + 1}`}
+                    className="object-cover  rounded-lg w-full h-full "
+                    loading="lazy" // Lazy load images
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>

@@ -9,9 +9,11 @@ import Contact from "@/components/Contact";
 import Testimonial from "@/components/Testimonial";
 import TravelCategories from "@/components/TravelCategories";
 import React from "react";
-import Introduction from "@/components/Introduction/introduction";
+
 import TravelStories from "@/components/TravelStories/travel-stories";
 import Link from "next/link";
+import MostVisitPlaces from "@/components/mostVisitPlaces";
+import AboutMe from "@/components/AboutMe";
 
 
 
@@ -35,7 +37,9 @@ export default function Home() {
       <Hero />
        <Brands />
       <TravelCategories/>
-      <Introduction/>
+      <AboutMe/>
+<MostVisitPlaces/>
+
       <About />
 <TravelStories/>
       <FAQ />

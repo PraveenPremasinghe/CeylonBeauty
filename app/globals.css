@@ -8,7 +8,13 @@
 /* third-party libraries CSS */
 
 .bg-primary{
-  background-color: #0C363C;
+  background-color: #00A656;
+}
+.text-secondary{
+  color: #001f14;
+}
+.bg-secondary{
+  background-color: #001f14;
 }
 
 .testimonial-01 .swiper-pagination-bullet {
@@ -220,12 +226,14 @@ pre {
 }
 
 .footer-bg {
-  background-image: url('https://www.lovesrilanka.org/wp-content/uploads/2019/09/Footer-Desktop-3.jpg');
+  background-image: url('/images/user/33.png');
   background-size: cover;
   background-position: center;
   /* Optional: Adding a semi-transparent gradient for better contrast */
   /*background-image: linear-gradient(3deg, rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.2)), url('https://www.lovesrilanka.org/wp-content/uploads/2019/09/Footer-Desktop-3.jpg');*/
 }
+
+
 
 
 .scan-me{
@@ -280,15 +288,55 @@ pre {
 
 
 .green-text{
-  color: #062F35;
+  color: #00A656;
 }
 .green-bg{
-  background: #062F35;
+  background: #001f14;
   color: #FFFFFF;
 }
 
 .green-gradient-bg {
-  background: rgb(6,47,53);
-  background: linear-gradient(66deg, rgba(6,47,53,1) 0%, rgba(0,100,0,1) 59%, rgba(174,222,52,1) 100%);
+  background: #26BF4F;
+  /*background: linear-gradient(66deg, rgba(6,47,53,1) 0%, rgba(0,100,0,1) 59%, rgba(174,222,52,1) 100%);*/
+
 }
+
+.most-visit-btn{
+  padding: 5px 25px;
+  border-radius: 20px;
+  font-weight: 500;
+  border: 1.5px solid #e0e0e0;
+  text-overflow: ellipsis;
+  box-shadow: none;
+  box-sizing: border-box;
+  width: auto;
+  font-size: smaller;
+
+}
+
+.most-visit-card{
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  margin: 5px;
+}
+
+.most-visit-card-bottom{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  /*background-color: #ffffff;*/
+  width: 90%;
+  border-radius: 16px;
+overflow: hidden;
+  padding: 7px 15px;
+color: white;
+  background: rgba(255,255,255,0.45);
+  -webkit-backdrop-filter: blur(44px);
+  backdrop-filter: blur(44px);
+  border: 1px solid rgba(255,255,255,0.225);
+}
+
+
 

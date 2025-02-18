@@ -27,6 +27,8 @@ const Hero = () => {
 
   return (
     <>
+
+
       <section className="hero-section relative h-[100vh] overflow-hidden bg-cover bg-center ">
         <div className="fixed top-15 right-4 z-999">
           <WeatherCard isScrolledPastHero={isScrolledPastHero} />
