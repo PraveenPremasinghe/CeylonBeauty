@@ -3,7 +3,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["localhost", "plus.unsplash.com", "static01.nyt.com","images.unsplash.com"],
+    domains: ["localhost", "plus.unsplash.com", "static01.nyt.com","images.unsplash.com","www.google.com",'cdn.pixabay.com'],
     remotePatterns: [
       {
         protocol: "https",

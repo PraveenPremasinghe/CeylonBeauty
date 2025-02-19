@@ -86,10 +86,10 @@ const MostVisitPlaces = () => {
                   <div className="most-visit-card-bottom flex justify-between items-center  ">
                     <div>
                       <div className="font-semibold  ">{place.name}</div>
-                      <div className="font-light text-sm ">5km</div>
+                      <div className="font-light text-sm ">{place.distance}</div>
                     </div>
                     <div className=" font-semibold  ">
-                      10Min
+                      {place.time}
                     </div>
                   </div>
 

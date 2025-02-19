@@ -12,7 +12,7 @@ const About = () => {
   return (
     <>
       {/* ===== About Section ===== */}
-      <section className="overflow-hidden pb-20 lg:pb-25 xl:pb-30 mt-20">
+      <section className="overflow-hidden pb-20 lg:pb-25 xl:pb-30 ">
         <SectionHeader
           headerInfo={{
             title: "Recommended",
@@ -24,7 +24,7 @@ const About = () => {
           {aboutData.map((item) => (
             <div
               key={item.id}
-              className={`flex items-center gap-8 lg:gap-32.5 mb-10 ${
+              className={`flex flex-wrap sm:flex-nowrap lg:flex-nowrap items-center gap-8 lg:gap-32.5 mb-10 ${
                 item.isImageLeft ? "" : "flex-row-reverse"
               }`}
             >
@@ -43,12 +43,12 @@ const About = () => {
                 whileInView="visible"
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="animate_left relative mx-auto hidden aspect-[588/526.5] md:block md:w-1/2"
+                className="animate_left relative mx-auto w-full sm:w-3/4 md:w-1/2 aspect-[588/526.5]"
               >
                 <Image
                   src={item.aboutImage}
                   alt={item.aboutTitle}
-                  className="dark:hidden"
+                  className="dark:hidden object-cover  rounded-lg"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority

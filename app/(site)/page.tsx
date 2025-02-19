@@ -18,8 +18,6 @@ import AboutMe from "@/components/AboutMe";
 
 
 
-
-
 export const metadata: Metadata = {
   title: " CeylonBeauty | Explore the Best of Sri Lanka with Expert Tours",
   description: " Discover the stunning beauty of Sri Lanka with CeylonBeauty, your trusted tour guide. From breathtaking landscapes to rich cultural experiences, we offer personalized tours tailored to your interests. Join us for an unforgettable journey through Sri Lanka’s most iconic attractions and hidden gems",

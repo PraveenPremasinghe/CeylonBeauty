@@ -1,43 +1,44 @@
 "use client"; // Add this line at the top of the file
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { ceylonBeautyDatabase } from "@/lib/firebase";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Navigation, Pagination } from "swiper";
 import "swiper/swiper-bundle.css";
 import SectionHeader from "@/components/Common/SectionHeader";
-
 const Gallery = () => {
-  const [travelStories, setTravelStories] = useState<any[]>([]); // Store travel stories
-  const [loading, setLoading] = useState<boolean>(true); // Loading state
-  const [selectedStory, setSelectedStory] = useState<any | null>(null); // Store selected story
+  const [travelStories, setTravelStories] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [selectedStory, setSelectedStory] = useState<any | null>(null);
 
-  // Fetch the travel stories from Firestore
-  const fetchTravelStories = async () => {
+  // Fetch the travel stories (wrapped with useCallback to prevent unnecessary re-renders)
+  const fetchTravelStories = useCallback(async () => {
     try {
       setLoading(true);
-      const querySnapshot = await getDocs(collection(ceylonBeautyDatabase, "travelStories"));
+      const querySnapshot = await getDocs(
+        collection(ceylonBeautyDatabase, "travelStories")
+      );
       const fetchedStories = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
       setTravelStories(fetchedStories);
+      console.log(fetchedStories);
     } catch (error) {
       console.error("Error fetching travel stories:", error);
     } finally {
       setLoading(false);
     }
-  };
-
-  useEffect(() => {
-    fetchTravelStories(); // Fetch data on component mount
   }, []);
 
-  const handleCardClick = (story: any) => {
-    setSelectedStory(story); // Set the selected story
-  };
+  useEffect(() => {
+    fetchTravelStories();
+  }, [fetchTravelStories]); // Only runs once on mount
 
+  const handleCardClick = (story: any) => {
+    setSelectedStory(story);
+  };
   return (
     <section className="mt-20 overflow-hidden pb-20 lg:pb-25 xl:pb-30">
       <SectionHeader
