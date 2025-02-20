@@ -6,7 +6,7 @@ export const heroSectionData: any[] = [
     subTitle: "Welcome to Sri Lanka",
     title: "We Take Care of your Trip",
     image:
-      "/images/hero/32.jpg",
+      "/images/hero/hero-bg-1.webp",
     content:
       "We believe in a travelling experience by providing our tour plan that suits your the best!",
     isButton: false,
@@ -17,7 +17,7 @@ export const heroSectionData: any[] = [
     subTitle: "Need assistance?",
     title: "Feel free to reach out",
     image:
-      "/images/hero/33.jpg",
+      "/images/hero/hero-bg-2.webp",
     isButton: true,
     content: "",
     btnContent: "Contact us",
