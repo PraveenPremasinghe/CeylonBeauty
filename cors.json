@@ -1,8 +1,9 @@
-[
-  {
-    "origin": ["*"],
-    "method": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    "responseHeader": ["*"],
-    "maxAgeSeconds": 3600
-  }
-]
+{
+  "cors": [
+    {
+      "origin": ["https://ceylon-beauty.vercel.app"],
+      "method": ["GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"],
+      "maxAgeSeconds": 3600
+    }
+  ]
+}
