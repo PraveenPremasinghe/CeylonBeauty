@@ -17,7 +17,7 @@ export const heroSectionData: any[] = [
     subTitle: "Need assistance?",
     title: "Feel free to reach out",
     image:
-      "/images/hero/hero-bg-2.webp",
+      "/images/hero/hro-bg-2.webp",
     isButton: true,
     content: "",
     btnContent: "Contact us",

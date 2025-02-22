@@ -323,4 +323,28 @@ color: white;
 }
 
 
+.swiper-button-prev,
+.swiper-button-next {
+  width: 40px !important; /* Perfect size for the circle */
+  height: 40px !important; /* Same as width for a perfect circle */
+  background: rgba(0, 0, 0, 0.5) !important; /* Semi-transparent background */
+  border-radius: 50% !important; /* Ensure it's a perfect circle */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background 0.3s ease !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
 
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.8) !important; /* Darker on hover */
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 20px !important; /* Adjust icon size */
+  color: white !important; /* Icon color */
+}

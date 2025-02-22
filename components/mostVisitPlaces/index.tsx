@@ -16,10 +16,7 @@ import { Autoplay, Navigation, Pagination } from "swiper";
 
 
 const MostVisitPlaces = () => {
-
-
   const [selectedRegion, setSelectedRegion] = useState(destinations[0]);
-
 
   return (
     <>
@@ -29,26 +26,36 @@ const MostVisitPlaces = () => {
             title: "Most Visited Destinations of 2024",
             subtitle: "Explore Sri Lanka's Top Destinations",
             description:
-              "Discover the most popular places in Sri Lanka, celebrated for their natural beauty and cultural significance."
+              "Discover the most popular places in Sri Lanka, celebrated for their natural beauty and cultural significance.",
           }}
         />
 
         {/* ===== Region Tabs ===== */}
         <div className="mx-auto mt-10 max-w-c-1235 px-4 md:px-8 xl:px-0">
-          <div className="mb-6 flex justify-center gap-4">
-            {destinations.map((destination, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedRegion(destination)}
-                className={`most-visit-btn transition-all duration-300 ${
-                  selectedRegion.region === destination.region
-                    ? "bg-secondary text-white"
-                    : " "
-                }`}
-              >
-                {destination.region}
-              </button>
-            ))}
+          <div className="mb-6 flex justify-center">
+            <Swiper
+              slidesPerView="auto" // Allows multiple buttons to show
+              spaceBetween={10} // Spacing between buttons
+              freeMode={true} // Enables free scroll
+              className="w-full"
+            >
+              {destinations.map((destination, index) => (
+                <SwiperSlide key={index} className="!w-auto">
+                  {" "}
+                  {/* Ensure buttons are not cut */}
+                  <button
+                    onClick={() => setSelectedRegion(destination)}
+                    className={`most-visit-btn min-w-fit rounded-lg px-4 py-2 transition-all duration-300 ${
+                      selectedRegion.region === destination.region
+                        ? "bg-secondary text-white"
+                        : " "
+                    }`}
+                  >
+                    {destination.region}
+                  </button>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
 
           {/* ===== Swiper for Selected Region ===== */}
@@ -82,17 +89,15 @@ const MostVisitPlaces = () => {
                     className="h-64 w-full object-cover"
                   />
 
-
-                  <div className="most-visit-card-bottom flex justify-between items-center  ">
+                  <div className="most-visit-card-bottom flex items-center justify-between  ">
                     <div>
                       <div className="font-semibold  ">{place.name}</div>
-                      <div className="font-light text-sm ">{place.distance}</div>
+                      <div className="text-sm font-light ">
+                        {place.distance}
+                      </div>
                     </div>
-                    <div className=" font-semibold  ">
-                      {place.time}
-                    </div>
+                    <div className=" font-semibold  ">{place.time}</div>
                   </div>
-
                 </motion.div>
               </SwiperSlide>
             ))}
