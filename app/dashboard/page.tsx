@@ -1,28 +1,33 @@
-"use client"; // Ensure it's a client component
+"use client"; // Ensures it's a client component
 
 import React, { useState, useEffect } from "react";
-import { ceylonBeautyStorage, ceylonBeautyDatabase } from "@/lib/firebase"; // Import Firebase services
+import { ceylonBeautyStorage, ceylonBeautyDatabase } from "@/lib/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // For Toast styling
+import "react-toastify/dist/ReactToastify.css";
 
 const UploadTravelStory = () => {
   const [travelStoryName, setTravelStoryName] = useState("");
   const [travelDate, setTravelDate] = useState("");
   const [imageFiles, setImageFiles] = useState<File[]>([]);
   const [loading, setLoading] = useState(false);
-  const [uploadProgress, setUploadProgress] = useState<{ [key: string]: number }>({}); // Progress for each image
+  const [uploadProgress, setUploadProgress] = useState<{ [key: string]: number }>({});
   const [allTravelStories, setAllTravelStories] = useState<any[]>([]);
 
   // Fetch all travel stories from Firestore
   const fetchTravelStories = async () => {
-    const querySnapshot = await getDocs(collection(ceylonBeautyDatabase, "travelStories"));
-    const stories = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    setAllTravelStories(stories);
+    try {
+      const querySnapshot = await getDocs(collection(ceylonBeautyDatabase, "travelStories"));
+      const stories = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setAllTravelStories(stories);
+    } catch (error) {
+      console.error("Error fetching travel stories:", error);
+      toast.error("Error fetching stories. Please try again.");
+    }
   };
 
   useEffect(() => {
@@ -52,18 +57,18 @@ const UploadTravelStory = () => {
 
       // Upload each image and get its URL
       for (const file of imageFiles) {
-        const fileName = `${travelStoryName}-${file.name}`; // Unique file name
+        const fileName = `${Date.now()}-${file.name}`; // Unique filename
         const storageRef = ref(ceylonBeautyStorage, `travelStories/${travelStoryName}/${fileName}`);
         const uploadTask = uploadBytesResumable(storageRef, file);
 
+        // Track progress
         uploadTask.on(
           "state_changed",
           (snapshot) => {
-            // Calculate and update the upload progress for this image
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             setUploadProgress((prev) => ({
               ...prev,
-              [fileName]: progress, // Store progress for each file by its name
+              [fileName]: progress,
             }));
           },
           (error) => {
@@ -72,24 +77,23 @@ const UploadTravelStory = () => {
             setLoading(false);
           },
           async () => {
-            // Get the download URL after the upload is complete
             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
             uploadedImageUrls.push(downloadURL);
             totalFilesUploaded++;
 
-            // If all files are uploaded, save to Firestore
             if (totalFilesUploaded === imageFiles.length) {
               await addDoc(collection(ceylonBeautyDatabase, "travelStories"), {
                 travelStoryName,
                 travelDate,
                 imageUrls: uploadedImageUrls,
+                createdAt: new Date(),
               });
 
               toast.success("Travel Story uploaded successfully!");
               setTravelStoryName("");
               setTravelDate("");
               setImageFiles([]);
-              fetchTravelStories(); // Refresh the list of all travel stories
+              fetchTravelStories();
             }
           }
         );
@@ -103,18 +107,13 @@ const UploadTravelStory = () => {
   };
 
   return (
-    <section className="mx-auto mt-20 max-w-2xl px-4">
-      <h2 className="mb-6 text-2xl font-semibold text-gray-800">
-        Upload a New Travel Story
-      </h2>
+    <section className="mx-auto mt-10 max-w-3xl px-6">
+      <h2 className="mb-6 text-2xl font-bold text-gray-800">Upload a New Travel Story</h2>
 
       {/* Upload Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="space-y-2">
-          <label
-            htmlFor="travelStoryName"
-            className="text-sm font-semibold text-gray-600"
-          >
+        <div>
+          <label htmlFor="travelStoryName" className="text-sm font-semibold text-gray-600">
             Travel Story Name
           </label>
           <input
@@ -127,11 +126,8 @@ const UploadTravelStory = () => {
           />
         </div>
 
-        <div className="space-y-2">
-          <label
-            htmlFor="travelDate"
-            className="text-sm font-semibold text-gray-600"
-          >
+        <div>
+          <label htmlFor="travelDate" className="text-sm font-semibold text-gray-600">
             Travel Date
           </label>
           <input
@@ -143,11 +139,8 @@ const UploadTravelStory = () => {
           />
         </div>
 
-        <div className="space-y-2">
-          <label
-            htmlFor="imageFiles"
-            className="text-sm font-semibold text-gray-600"
-          >
+        <div>
+          <label htmlFor="imageFiles" className="text-sm font-semibold text-gray-600">
             Upload Images
           </label>
           <input
@@ -160,10 +153,10 @@ const UploadTravelStory = () => {
           />
         </div>
 
-        {/* Display progress bar for each image */}
+        {/* Progress Bars */}
         <div className="mt-4">
           {imageFiles.map((file) => {
-            const fileName = `${travelStoryName}-${file.name}`;
+            const fileName = `${Date.now()}-${file.name}`;
             return (
               <div key={fileName} className="my-2">
                 <p className="text-sm text-gray-600">{file.name}</p>
@@ -180,12 +173,9 @@ const UploadTravelStory = () => {
             );
           })}
         </div>
+
         <div className="text-center">
-          <button
-            type="submit"
-            disabled={loading}
-            className="rounded-lg bg-blue-600 px-6 py-3 text-white"
-          >
+          <button type="submit" disabled={loading} className="rounded-lg bg-blue-600 px-6 py-3 text-white">
             {loading ? "Uploading..." : "Upload Story"}
           </button>
         </div>
@@ -193,24 +183,13 @@ const UploadTravelStory = () => {
 
       {/* Display Uploaded Stories */}
       <div className="mt-12">
-        <h3 className="mb-4 text-xl font-semibold text-gray-800">
-          All Travel Stories
-        </h3>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+        <h3 className="mb-4 text-xl font-bold text-gray-800">All Travel Stories</h3>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
           {allTravelStories.map((story) => (
-            <div
-              key={story.id}
-              className="overflow-hidden rounded-lg shadow-lg"
-            >
-              <img
-                src={story.imageUrls[0]} // Display the first image
-                alt={story.travelStoryName}
-                className="h-48 w-full rounded-t-lg object-cover"
-              />
+            <div key={story.id} className="rounded-lg shadow-md">
+              <img src={story.imageUrls[0]} alt={story.travelStoryName} className="h-48 w-full rounded-t-lg object-cover" />
               <div className="p-4">
-                <h4 className="text-lg font-semibold text-gray-800">
-                  {story.travelStoryName}
-                </h4>
+                <h4 className="text-lg font-semibold">{story.travelStoryName}</h4>
                 <p className="text-sm text-gray-600">{story.travelDate}</p>
               </div>
             </div>
@@ -218,11 +197,7 @@ const UploadTravelStory = () => {
         </div>
       </div>
 
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-      />
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
     </section>
   );
 };
