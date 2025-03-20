@@ -1,8 +1,11 @@
-export type Testimonial = {
-  id: number;
+export interface Testimonial {
+  id: string;
   name: string;
-  destination?: string;
-  image: any;
-  content: string;
-  designation: string;
-};
+  tourDate: string;
+  rating: number;
+  feedback: string; // Replace "content" with "feedback"
+  images: string[]; // Add "images"
+  createdAt: string; // Add "createdAt"
+  designation?: string; // Optional field
+  image?: string; // Optional field
+}

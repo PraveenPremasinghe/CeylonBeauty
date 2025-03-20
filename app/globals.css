@@ -348,3 +348,25 @@ color: white;
   font-size: 20px !important; /* Adjust icon size */
   color: white !important; /* Icon color */
 }
+.review-card{
+  background-color: #007bff03;
+  border-radius: 12px;
+  border: 1px solid #007bff29;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+}
+@keyframes checkmark {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-checkmark {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: checkmark 0.5s ease-in-out forwards;
+}
