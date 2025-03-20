@@ -1,5 +1,5 @@
 {
-  "name": "solid-nextjs",
+  "name": "CeyloanBeauty",
   "version": "0.2.0",
   "private": true,
   "scripts": {
@@ -22,6 +22,7 @@
     "@types/react-dom": "^18.2.14",
     "autoprefixer": "^10.4.16",
     "browser-image-compression": "^2.0.2",
+    "date-fns": "^4.1.0",
     "firebase": "^11.1.0",
     "framer-motion": "^11.13.1",
     "hugeicons-react": "^0.3.0",
