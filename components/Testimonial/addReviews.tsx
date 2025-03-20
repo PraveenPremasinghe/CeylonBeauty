@@ -135,7 +135,7 @@ const FeedbackModal = ({ isOpen, onClose }: FeedbackFormProps) => {
       }, 4000);
     } catch (error) {
       console.error("Error submitting feedback:", error);
-      alert("An error occurred while submitting feedback. Please try again.");
+      alert("An error occurred while submitting feedback. Please try agains.");
     } finally {
       setIsSubmitting(false);
     }
