@@ -69,9 +69,9 @@ const Testimonial = () => {
           <div className="animate_top mx-auto text-center">
             <SectionHeader
               headerInfo={{
-                title: `FEEDBACK`,
-                subtitle: `Client’s Feedback`,
-                description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.`,
+                title: `What Our Clients Say`,
+                subtitle: `Experiences Shared by Our Guests`,
+                description: `Hear what our travelers have to say about their unforgettable experiences with us! `,
               }}
             />
             <div className="mx-4 flex items-center justify-center mt-2">
