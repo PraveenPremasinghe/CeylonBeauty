@@ -169,9 +169,12 @@ const FeedbackModal = ({ isOpen, onClose }: FeedbackFormProps) => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900 text-center">
-                    Add Feedback
-                  </Dialog.Title>
+                  {!isSubmitted && ( // Only show the title when not submitted
+                    <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900 text-center">
+                      Add Feedback
+                    </Dialog.Title>
+                  )}
+
 
                   {isSubmitted ? (
                     <div className="text-center py-6">

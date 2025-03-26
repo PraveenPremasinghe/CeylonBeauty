@@ -31,6 +31,8 @@ const Testimonial = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
 
+
+
   useEffect(() => {
     const fetchReviews = async () => {
       try {
@@ -39,12 +41,13 @@ const Testimonial = () => {
           const data = doc.data();
           return {
             id: doc.id,
-            name: data.name,
-            tourDate: format(data.tourDate.toDate(), "MMMM dd, yyyy h:mm a"),
-            rating: data.rating,
-            feedback: data.feedback,
-            images: data.images,
-            createdAt: format(data.createdAt.toDate(), "MMMM dd, yyyy h:mm a"),
+            name: data.name || "Anonymous",
+            tourDate: data.tourDate?.toDate() || new Date(),
+            rating: data.rating || 0,
+            feedback: data.feedback || "",
+            images: data.images || [],
+            createdAt: data.createdAt?.toDate() || new Date(),
+
           };
         }) as Review[];
         setReviews(reviewsData);
@@ -59,7 +62,18 @@ const Testimonial = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading reviews...</div>;
+    return (
+      <div className="flex h-64 items-center justify-center">
+        <div>Loading reviews...</div>
+      </div>
+    );
+  }
+  if (reviews.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div>No reviews yet. Be the first to leave one!</div>
+      </div>
+    );
   }
 
   return (
@@ -74,8 +88,11 @@ const Testimonial = () => {
                 description: `Hear what our travelers have to say about their unforgettable experiences with us! `,
               }}
             />
-            <div className="mx-4 flex items-center justify-center mt-2">
-              <Button onClick={openModal} className="rounded-full bg-blue-600 px-5.5 py-2 text-regular text-white">
+            <div className="mx-4 mt-2 flex items-center justify-center">
+              <Button
+                onClick={openModal}
+                className="rounded-full bg-blue-600 px-5.5 py-2 text-regular text-white"
+              >
                 Add Review
               </Button>
             </div>

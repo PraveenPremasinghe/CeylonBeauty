@@ -30,7 +30,6 @@ const Gallery = () => {
         ...doc.data(),
       }));
       setTravelStories(fetchedStories);
-      console.log(fetchedStories);
     } catch (error) {
       console.error("Error fetching travel stories:", error);
     } finally {
