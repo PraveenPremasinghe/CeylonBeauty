@@ -8,9 +8,20 @@ import { addDoc, collection } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { ceylonBeautyDatabase, ceylonBeautyStorage } from "@/lib/firebase";
 
+interface Review {
+  id: string;
+  name: string;
+  tourDate: string;
+  rating: number;
+  feedback: string;
+  images: string[];
+  createdAt: string;
+}
+
 interface FeedbackFormProps {
   isOpen: boolean;
   onClose: () => void;
+  onReviewAdded?: (review: Review) => void;
 }
 
 interface FormData {
@@ -29,7 +40,7 @@ const initialFormData: FormData = {
   images: [],
 };
 
-const FeedbackModal = ({ isOpen, onClose }: FeedbackFormProps) => {
+const FeedbackModal = ({ isOpen, onClose,onReviewAdded }: FeedbackFormProps) => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -113,29 +124,47 @@ const FeedbackModal = ({ isOpen, onClose }: FeedbackFormProps) => {
         })
       );
 
-      // Save feedback data to Firestore
-      await addDoc(collection(ceylonBeautyDatabase, "clientReviews"), {
+      // Create the review data
+      const reviewData = {
         name: formData.name,
-        tourDate: formData.tourDate,
+        tourDate: formData.tourDate || new Date(),
         rating: formData.rating,
         feedback: formData.feedback,
         images: imageUrls,
         createdAt: new Date(),
-      });
+      };
+
+      // Save feedback data to Firestore and get the document reference
+      const docRef = await addDoc(collection(ceylonBeautyDatabase, "clientReviews"), reviewData);
+
+      // Create the complete review object
+      const newReview = {
+        id: docRef.id,
+        name: formData.name,
+        tourDate: format(formData.tourDate || new Date(), "MMMM dd, yyyy h:mm a"),
+        rating: formData.rating,
+        feedback: formData.feedback,
+        images: imageUrls,
+        createdAt: format(new Date(), "MMMM dd, yyyy h:mm a"),
+      };
+
+      // Call the callback to update the parent component
+      if (onReviewAdded) {
+        onReviewAdded(newReview);
+      }
+
       setSubmittedName(formData.name);
-      // Show success message and reset form
       setIsSubmitted(true);
       setFormData(initialFormData);
 
-      // Auto-close the modal after 3 seconds
       setTimeout(() => {
         onClose();
-        setIsSubmitted(false); // Reset the success message state
+        setIsSubmitted(false);
         setSubmittedName("");
-      }, 4000);
+      }, 2000);
     } catch (error) {
       console.error("Error submitting feedback:", error);
-      alert("An error occurred while submitting feedback. Please try agains.");
+      alert("An error occurred while submitting feedback. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

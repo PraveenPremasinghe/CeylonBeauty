@@ -31,7 +31,10 @@ const Testimonial = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
 
-
+  // Function to add new review to state
+  const handleNewReview = (newReview: Review) => {
+    setReviews(prevReviews => [newReview, ...prevReviews]); // Add to beginning of array
+  };
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -50,6 +53,7 @@ const Testimonial = () => {
 
           };
         }) as Review[];
+
         setReviews(reviewsData);
       } catch (error) {
         console.error("Error fetching reviews:", error);
@@ -129,7 +133,11 @@ const Testimonial = () => {
               </Swiper>
             </div>
           </motion.div>
-          <FeedbackForm isOpen={isModalOpen} onClose={closeModal} />
+          <FeedbackForm
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            onReviewAdded={handleNewReview} // Pass the callback
+          />
         </div>
       </section>
     </>

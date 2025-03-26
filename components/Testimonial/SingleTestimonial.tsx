@@ -2,7 +2,7 @@
 import { Card, CardFooter, CardHeader } from "@nextui-org/react";
 import { Calendar, Star } from "lucide-react";
 import { format, formatDistanceToNow } from "date-fns";
-import Image from "next/image";
+import { useState } from "react"; // Add this import
 
 interface Testimonial {
   id: string;
@@ -17,6 +17,14 @@ interface Testimonial {
 
 const SingleTestimonial = ({ review }: { review: Testimonial }) => {
   const { name, rating, feedback, tourDate, images, createdAt } = review;
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Set your desired character limit for preview
+  const previewLength = 150;
+  const showReadMore = feedback.length > previewLength;
+  const displayText = isExpanded
+    ? feedback
+    : feedback.slice(0, previewLength) + (showReadMore ? "..." : "");
 
   return (
     <div>
@@ -26,7 +34,7 @@ const SingleTestimonial = ({ review }: { review: Testimonial }) => {
             <div className="flex flex-col">
               <span className="font-medium">{name || "Anonymous Guest"}</span>
               <div className="text-muted-foreground flex items-center gap-1 text-xs">
-                <Calendar size={12} />
+
                 <span> {format(new Date(tourDate), "MMMM dd, yyyy")}</span>
               </div>
             </div>
@@ -48,7 +56,17 @@ const SingleTestimonial = ({ review }: { review: Testimonial }) => {
         </CardHeader>
 
         <div className="px-4 pb-3">
-          <p className="whitespace-pre-line text-sm text-gray-600">{feedback}</p>
+          <p className="whitespace-pre-line text-sm text-gray-600">
+            {displayText}
+            {showReadMore && (
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="ml-1 text-blue-600 hover:text-blue-800 focus:outline-none"
+              >
+                {isExpanded ? "Show less" : "Read more"}
+              </button>
+            )}
+          </p>
 
           {images && images.length > 0 && (
             <div className="mt-4 grid grid-cols-3 gap-2">
