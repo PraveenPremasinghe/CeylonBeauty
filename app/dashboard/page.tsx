@@ -22,6 +22,7 @@ const UploadTravelStory = () => {
       const stories = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
+        imageUrls: doc.data().imageUrls || [],
       }));
       setAllTravelStories(stories);
     } catch (error) {
@@ -93,7 +94,7 @@ const UploadTravelStory = () => {
               setTravelStoryName("");
               setTravelDate("");
               setImageFiles([]);
-              fetchTravelStories();
+              await fetchTravelStories();
             }
           }
         );
