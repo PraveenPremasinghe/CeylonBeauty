@@ -42,7 +42,7 @@ const Footer = () => {
                     href="tel:+94770882237"
                     className="text-4xl   font-medium    text-white dark:text-white"
                   >
-                    077 714 7238
+                    +94 75 643 3267
                   </a>
                 </div>
               </div>

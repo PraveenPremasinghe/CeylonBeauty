@@ -29,7 +29,7 @@ export default function Example() {
               <a
                 href="tel:+94770882237"
               >
-             Call Now    +94 077 714 7238
+             Call Now    +94 75 643 3267
               </a>
             </div>
             <div className="flex items-center space-x-4 text-sm  ">
