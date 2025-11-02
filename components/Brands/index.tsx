@@ -13,7 +13,7 @@ const Brands = () => {
             <div className="absolute -top-30 left-1/2 -translate-x-1/2 transform">
               <img
                 className="h-24 w-24 md:h-60 md:w-60 rounded-full bg-white object-contain p-2  "
-                src="/images/user/jaga2.png"
+                src="/images/user/jaga4.png"
                 alt="Tourist"
               />
             </div>
